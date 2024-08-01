@@ -1,0 +1,17 @@
+{
+  "name": "presentations",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build --concurrency=1",
+    "export": "turbo run export"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^2.0.11"
+  },
+  "packageManager": "pnpm@9.6.0"
+}
