@@ -11,6 +11,7 @@ download: true
 
 # Remix の細かすぎて伝わらない好きなところ
 
+<!-- 30秒: こんにちは。今日は「Remixの細かすぎて伝わらない好きなところ」についてお話しします。Remixは最近注目を集めているReactフレームワークですが、その魅力は細部に宿っています。これから10分間で、私が特に気に入っている点をご紹介します。 -->
 ---
 
 # 自己紹介: 溝口浩二 coji
@@ -30,6 +31,8 @@ download: true
   - [Remix Tokyo Meetup](https://www.meetup.com/remix-tokyo/) オーガナイザー
   - 数ヶ月以内にまた都内でオフラインの小規模ミートアップを企画中
   - Remix の Discord で日本語OKチャンネルもできました。ぜひ。
+
+<!-- 1分: 私は溝口浩二、東京在住のプログラマーです。現在はTechTalkという会社で、主に新規事業開発のMVP開発を行っています。Remixは2年前から仕事で使用しており、その魅力にすっかり惹かれています。実は、Remix Tokyo Meetupのオーガナイザーもしています。では、本題に入りましょう。 -->
 
 ---
 
@@ -57,6 +60,8 @@ export const action = async ({ request }) => {
 
 Web標準の仕様(MDN): [Request](https://developer.mozilla.org/ja/docs/Web/API/Request), [Response](https://developer.mozilla.org/ja/docs/Web/API/Response), [URL](https://developer.mozilla.org/ja/docs/Web/API/URL_API), [URLSearchParams](https://developer.mozilla.org/ja/docs/Web/API/URLSearchParams), [FormData](https://developer.mozilla.org/ja/docs/Web/API/FormData)
 
+<!-- 1分30秒: Remixの最大の魅力は、Web標準に基づいていることです。RequestとResponseという基本的な概念を中心に設計されており、これがWeb開発の基本に立ち返る爽快感を与えてくれます。例えば、このコードを見てください。loaderとactionの実装がとてもシンプルで直感的です。これにより、コードが読みやすく、覚えやすく、そして間違いにくくなるのです。 -->
+
 ---
 
 ## 2. 妙な抽象化やブラックボックスがない
@@ -82,6 +87,8 @@ export const action = async ({ request }) => {
   });
 }
 ```
+
+<!-- 1分: 次に素晴らしいのは、不要な抽象化やブラックボックスがないことです。例えば、Cookieによるセッション管理も、RequestとResponseのヘッダーを直接扱います。このアプローチにより、コードの動作が透明で理解しやすくなります。必要に応じて自前のヘルパー関数を書くこともできる柔軟性も魅力です。 -->
 
 ---
 
@@ -111,6 +118,8 @@ export default function Users() {
 }
 ```
 
+<!-- 1分30秒: Remixのloader、action、componentの構造は、責務を明確に分離しています。これにより、データの流れが非常にクリアになります。特筆すべきは、useStateやuseEffectがほとんど不要になること。 -->
+
 ---
 
 ## 3 (cont). クリアなデータフロー 認証ガードの例
@@ -130,6 +139,8 @@ export default function Dashboard() {
   return (<h1>Welcome, {user.name}</h1>);
 }
 ```
+
+<!-- 認証のガード処理も、loaderで簡単に実装できます。このスライドのコードを見てください。とてもシンプルで直感的ですよね。 -->
 
 ---
 
@@ -164,6 +175,7 @@ export default function ContactPage() {
   );
 }
 ```
+<!-- 1分: Remixの素晴らしい点の一つは、プログレッシブエンハンスメントの考え方を実践できることです。最初は基本的なHTMLフォームから始めて、徐々に機能を追加していけます。このアプローチにより、基本機能を迅速にリリースし、その後ユーザー体験を段階的に向上させることができます。 -->
 
 ---
 
@@ -194,6 +206,8 @@ export default function PostIndexPage() {
     </div>)
 }
 ```
+
+<!-- 1分: Remixは、シングルページアプリケーション（SPA）モードも提供しています。これは特に、APIサーバーがある業務用Webアプリに最適です。SSRと同じ感覚で書けるため、学習コストが低く、状態管理もシンプルになります。普通のSPAと比べて、コードがとても簡潔になるんです。 -->
 
 ---
 
@@ -226,6 +240,8 @@ export default function Component() {
 
 出典: [RFC: React Elements and Promises as loader / action data](https://github.com/remix-run/remix/discussions/8048)
 
+<!-- 1分: RemixはRSCのようなパラダイムシフトを強制しません。これは大きな利点です。将来的にRSC対応の予定はありますが、より扱いやすい形になりそうです。このアプローチにより、既存のスキルセットを活かしつつ、徐々に新しい技術を取り入れることができます。 -->
+
 ---
 
 ## 7. 最もダウンロードされてる React フレームワークになりそう
@@ -236,6 +252,8 @@ export default function Component() {
 ![react-router-vs-next-vs-remix](/images/npmtrends-nextjs-remix-react-router.png)
 
 出典: [npmtrends](https://npmtrends.com/@remix-run/react-vs-next-vs-react-router)
+
+<!-- 30秒: 最後に、Remixの将来性について触れたいと思います。次のバージョンのRemixは、React Router v7として提供される予定です。React RouterはNext.jsよりもダウンロード数が多く、これはRemixの潜在的な影響力の大きさを示しています。 -->
 
 ---
 
@@ -262,3 +280,5 @@ Remixは、Web開発の本質に立ち返りつつ、
 と思わせてくれる
 
 シンプルで強力、直感的で柔軟、そして楽しくて堅実なフレームワークです。
+
+<!-- 1分: まとめると、Remixは「Web開発、こうあるべきだよね」と思わせてくれるフレームワークです。Web標準への回帰、高い透明性、クリアなデータフロー、段階的な機能強化の容易さ、柔軟な適用範囲、そして将来への適応性。これらの特徴が、Remixを現代的なニーズに応える「ちょうどいい」フレームワークにしています。シンプルで強力、直感的で柔軟、そして楽しくて堅実。それがRemixなのです。ご清聴ありがとうございました。 -->
