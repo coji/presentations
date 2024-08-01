@@ -1,5 +1,5 @@
 ---
-theme: seriph
+theme: default
 background: https://cover.sli.dev
 title: Remix の細かすぎて伝わらない好きなところ
 class: text-center
