@@ -45,16 +45,18 @@ download: true
 ```tsx
 import { json, redirect } from '@remix-run/node'
 
+// ページ読み込み時に呼び出され、Request を受けとり Response を返す
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
   const search = url.searchParams.get("q");
-  return json({ search }); // json の Response を返すヘルパー関数
+  return json({ search }); // json の Response を返す Remix のヘルパー関数
 }
 
+// フォームからの POST 時に呼び出され、Request を受けとり Reponse を返す
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const name = formData.get("name");
-  return redirect(`/hello/${name}`); // location ヘッダ付きの Reponse を返すヘルパー関数
+  return redirect(`/hello/${name}`); // location ヘッダ付きの Reponse を返す Remix のヘルパー関数
 }
 ```
 
@@ -94,7 +96,7 @@ export const action = async ({ request }) => {
 
 ## 3. クリアなデータフロー
 
-- loader / action / component で、コンパクトに責務を分離。
+- loader / component / action のサイクルで、コンパクトに責務を分離。
 - useState, useEffect 不要。
 
 ```javascript
@@ -109,7 +111,11 @@ export const action = async ({ request }) => {
 export default function Users() {
   const users = useLoaderData();
   return (
-    <ul>{users.map(user => <li key={user.id}>{user.name}</li>)}</ul>
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
     <form method="post">
       <input name="name" />
       <button type="submit">submit</button> 
@@ -118,6 +124,8 @@ export default function Users() {
 }
 ```
 
+<img className='absolute right-10 top-46 w-120' alt="fullstack dataflow" src="https://remix.run/blog-images/posts/remix-data-flow/loader-action-component.png" />
+
 <!-- 1分30秒: Remixのloader、action、componentの構造は、責務を明確に分離しています。これにより、データの流れが非常にクリアになります。特筆すべきは、useStateやuseEffectがほとんど不要になること。 -->
 
 ---
@@ -125,8 +133,8 @@ export default function Users() {
 ## 3 (cont). クリアなデータフロー 認証ガードの例
 
 - loader で認証ガード。
-- 表示側では認証されてるのを前提にできて、めっちゃシンプルに!
-- データフローがわかりやすいことの好例。
+- 表示側では認証されてるのを前提にできて、めっちゃシンプルに。
+- Remix のデータフローがわかりやすさ生むことの好例。
 
 ```tsx
 export const loader = ({ request }) => {
@@ -135,7 +143,9 @@ export const loader = ({ request }) => {
 }
 
 export default function Dashboard() {
-  const { user } = useLoaderData(); // 認証してる前提になるので user は必ずある！
+  const { user } = useLoaderData(); 
+  
+  // すでに認証してる前提になるので user は必ずある！
   return (<h1>Welcome, {user.name}</h1>);
 }
 ```
