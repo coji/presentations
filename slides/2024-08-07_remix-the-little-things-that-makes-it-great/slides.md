@@ -113,12 +113,12 @@ export const action = async ({ request }) => {
 export default function Users() {
   const users = useLoaderData();
   return (
-    <ul>
-      {users.map(user => (
-        <li key={user.id}>{user.name}</li>
-      ))}
-    </ul>
     <form method="post">
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
       <input name="name" />
       <button type="submit">submit</button> 
     <form>
@@ -194,28 +194,27 @@ export default function ContactPage() {
 ## 5. SPA mode が超イイ
 
 - API サーバがある前提での業務用Webアプリに最適。
-- SSR 時と同じノリで書ける (loader の代わりに clientLoader)
-- 普通の SPA に比べると、状態管理ほぼ不要に。シンプル！
+- SSR 時と同じように、責務を分けてクリアに書ける。
+- 普通の SPA に比べ状態管理ほぼ不要に。シンプル！
 
 ```javascript
-import { clientLoader } from "@remix-run/react";
-import { apiRequest } from 'app-admin-api'
-
-export const clientLoader = async ({ request }) => {
+export const clientLoader = ({ request }) => {
   const posts = await apiRequest('posts')
   return posts;
 };
 
 export default function PostIndexPage() {
   const posts = useLoaderData();
-  return (<div>
-    {posts.map((post) => (
-      <div key={post.id}>
-        <div>{post.title}</div>
-        <div>{post.body}<div>
-      </div>
-    ))}
-    </div>)
+  return (
+    <div>
+      {posts.map((post) => (
+        <div key={post.id}>
+          <div>{post.title}</div>
+          <div>{post.body}</div>
+        </div>
+      ))}
+    </div>
+  )
 }
 ```
 
@@ -305,4 +304,33 @@ layout: end
 
 Thank you.
 
+coji
+
 https://x.com/techtalkjp
+
+---
+
+```yaml
+layout: cover
+background: https://cover.sli.dev
+```
+
+# 向こう1年どうなる？
+
+現状の Remix v2 から、次のRemix v3 = React Router v7へ。
+
+---
+
+# Remix v3 = React Router v7
+
+Remix の次バージョンである v3 は React Router v7 にマージされます。
+
+<img class="rounded" src="https://remix.run/blog-images/posts/merging-remix-and-react-router/react-router-remix-graphic.jpeg" alt='roadmap' />
+
+---
+
+# Remix のリリース履歴
+
+- v1.0: 2021-11-23
+- v2.0: 2023-09-15
+- v3: 作業中
