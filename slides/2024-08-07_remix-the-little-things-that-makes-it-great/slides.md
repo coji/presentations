@@ -317,20 +317,117 @@ background: https://cover.sli.dev
 
 # 向こう1年どうなる？
 
-現状の Remix v2 から、次のRemix v3 = React Router v7へ。
+現状の Remix v2 から、次のRemix v3 = React Router v7へ。<br />
+そして、その先へ。
 
 ---
 
 # Remix v3 = React Router v7
 
-Remix の次バージョンである v3 は React Router v7 にマージされます。
+Remix の次バージョンである v3 は React Router v7 という名前になります。
 
 <img class="rounded" src="https://remix.run/blog-images/posts/merging-remix-and-react-router/react-router-remix-graphic.jpeg" alt='roadmap' />
 
 ---
 
-# Remix のリリース履歴
+# React Router v7 への移行に向けて
 
-- v1.0: 2021-11-23
-- v2.0: 2023-09-15
-- v3: 作業中
+ステップの見通し
+
+1. 最新の Remix v2.x を維持する
+2. Future Flags を個別に有効化して動作確認
+   - 3-1: 軽微な future flags に対応する
+   - 3-2: **single fetch** に対応する
+3. React Router v7 への移行
+4. 開発動向に注意する
+
+---
+
+# ステップ1: 最新の Remix v2.x を維持する
+
+定期的に最新の Remix v2.x バージョンにアップデートしてください：
+
+```bash
+npm install @remix-run/react@latest @remix-run/node@latest
+```
+
+これにより、最新の機能とバグ修正が確保され、将来の移行がスムーズになります。
+
+---
+
+# ステップ2: Future Flags を個別に有効化
+
+vite.config.ts で Future Flags を有効化し、個別にテストします：
+
+```javascript
+remix({
+  future: {
+    v3_fetcherPersist: true,
+    v3_relativeSplatPath: true,
+    v3_throwAbortReason: true,
+    unstable_lazyRouteDiscovery: true, // 遅延ルート発見
+    // unstable_singleFetch: true, // 後のステップで有効化
+  },
+})
+```
+
+各フラグを有効にした後、アプリケーションの動作を慎重にテストしてください。
+
+---
+
+# ステップ2-1: 軽微な future flags に対応する
+
+対応が必要な Future Flags
+
+- **v3_fetcherPersist**: フェッチャーの永続化
+- **v3_relativeSplatPath**: 相対スプラットパスの変更
+- **v3_throwAbortReason**: アボート理由のスロー
+- **unstable_lazyRouteDiscovery**: 遅延ルート発見機能 (大規模アプリでのバンドルサイズ削減)
+
+これらのフラグを順次有効化し、アプリケーションの動作を確認してください。
+`unstable_lazyRouteDiscovery` はまだ unstable ではありますが、コードの変更はまず不要と思われます。
+
+---
+
+# ステップ2-2: single fetch に対応する
+
+シングルフェッチの準備 ※ まだ unstable なので、安定化されてから対応することをお勧めします。
+
+- クライアントサイド遷移時、単一の HTTP リクエストだけで処理が行われるようになります。
+  - これまでは個別ルートごとにパラレルに loader が呼ばれる fetch が走っていました。
+- loader と action からの裸のオブジェクト（Date, Error, Promise, RegExp など）の送信が可能に
+- シリアル化の処理とレスポンス ステータス/ヘッダーの渡し方に変更があるため、既存のコードの一部見直しが必要 (認証のセッションや toast 等に影響か)
+
+---
+
+# ステップ3. React Router v7 への移行
+
+予想される移行プロセス（半年以内?）
+
+- Future Flags が有効な場合、ほぼシームレスな移行
+- 主な変更点：import ステートメントの更新
+- 例: `@remix-run/react` → `react-router`
+- コードモッドツールが提供される予定
+- 実際のコードロジックの変更は最小限か不要と予想
+
+移行時期が近づいたら、公式ドキュメントを確認し、具体的な手順に従ってください。
+
+---
+
+# Remixの今後の展望
+
+これまでの Remix は React Router になります。では、新しい Remix (v4?)は？<br />
+Remix の開発者である Ryan Florence は以下のようにブログに書いています。
+
+Remixの今後の展望：大きな変革の予感
+
+- React 19 と RSC により、Remixの基本概念が劇的に変わる可能性
+- 新API "Reverb" 開発中：現行版とは「大きく異なる」アプローチ
+- ただし、段階的な採用を可能に：
+  - React Router v7 で現行版と新版の並行運用を実現
+- Remixの名前とコミュニティは維持
+- 近い将来、革新的な新APIを公開予定
+
+※ 出典: [Incremental Path to React 19: React Conf Follow-Up](https://remix.run/blog/incremental-path-to-react-19#rsc-changes-remix)
+
+ちょっと不安もありますが、今後どうなっていくのか、要チェックですね！
