@@ -16,7 +16,7 @@ download: true
 
 # 自己紹介: 溝口浩二 coji
 
-東京在住のプログラマ。 [X](https://x.com/techtalkjp) | [GitHub](https://github.com/coji)
+東京在住のプログラマー。 [X](https://x.com/techtalkjp) | [GitHub](https://github.com/coji)
 
 <img src="/images/coji.jpg" className='rounded-full absolute top-8 right-24 w-16' alt="coji" />
 
@@ -29,8 +29,9 @@ download: true
 
 - Remix が便利なので2年前から仕事で使っています。語りたい！
   - [Remix Tokyo Meetup](https://www.meetup.com/remix-tokyo/) オーガナイザー
-  - 数ヶ月以内にまた都内でオフラインの小規模ミートアップを企画中
-  - Remix の Discord で日本語OKチャンネルもできました。ぜひ。
+    - 数ヶ月以内にまた都内でオフラインの小規模ミートアップを企画中
+  - [Remixドキュメント日本語版](https://remix-docs-ja.techtalk.jp/) メンテしてます。
+  - [Remix の Discord に日本語OKチャンネルもできました](https://discord.gg/br3Bw3PqYy)。ぜひ。
 
 <!-- 1分: 私は溝口浩二、東京在住のプログラマーです。現在はTechTalkという会社で、主に新規事業開発のMVP開発を行っています。Remixは2年前から仕事で使用しており、その魅力にすっかり惹かれています。実は、Remix Tokyo Meetupのオーガナイザーもしています。では、本題に入りましょう。 -->
 
@@ -38,14 +39,15 @@ download: true
 
 ## 1. Web標準がベースになっている
 
-- Web といえば、Request と Response
-- Web開発の基本に立ち返る爽快感
+- Web といえば、Request を受け取って Response を返す。
+  - Web開発の基本に立ち返る爽快感
+  - 仕様も安定。
 - わかりやすい = 覚えやすい = 読みやすい = 間違いにくい
 
 ```tsx
 import { json, redirect } from '@remix-run/node'
 
-// ページ読み込み時に呼び出され、Request を受けとり Response を返す
+// ページ読み込み GET 時に呼び出され、Request を受けとり Response を返す
 export const loader = async ({ request }) => {
   const url = new URL(request.url);
   const search = url.searchParams.get("q");
@@ -90,7 +92,7 @@ export const action = async ({ request }) => {
 }
 ```
 
-<!-- 1分: 次に素晴らしいのは、不要な抽象化やブラックボックスがないことです。例えば、Cookieによるセッション管理も、RequestとResponseのヘッダーを直接扱います。このアプローチにより、コードの動作が透明で理解しやすくなります。必要に応じて自前のヘルパー関数を書くこともできる柔軟性も魅力です。 -->
+<!-- 1分: 次に素晴らしいのは、不要な抽象化やブラックボックスがないことです。例えば、Cookieによるセッション管理も、RequestとResponseのヘッダーを直接扱えます。このアプローチにより、コードの動作が透明で理解しやすくなります。必要に応じて自前のヘルパー関数を書くこともできる柔軟性も魅力です。 -->
 
 ---
 
@@ -160,6 +162,7 @@ export default function Dashboard() {
 - あとで時間ができたらいろいろ工夫して UX を向上。
 
 ```javascript
+// 今日リリースするために、最低限の実装で。
 export default function ContactPage() {
   return (
     <form method="post">
@@ -171,6 +174,7 @@ export default function ContactPage() {
 ```
 
 ```javascript
+// あとで時間ができたらいろいろ工夫して UX を向上。
 export default function ContactPage() {
   const navigation = useNavigation();
   const actionData = useActionData();
@@ -181,9 +185,7 @@ export default function ContactPage() {
         {navigation.state === "submitting" ? "登録中..." : "登録"}
       </button>
       {actionData?.error && <p>{actionData.error}</p>}
-    </Form>
-  );
-}
+    </Form>);}
 ```
 <!-- 1分: Remixの素晴らしい点の一つは、プログレッシブエンハンスメントの考え方を実践できることです。最初は基本的なHTMLフォームから始めて、徐々に機能を追加していけます。このアプローチにより、基本機能を迅速にリリースし、その後ユーザー体験を段階的に向上させることができます。 -->
 
@@ -223,8 +225,10 @@ export default function PostIndexPage() {
 
 ## 6. つらい React Server Component (RSC) 対応が不要
 
-- 別にそこまでして...パラダイム転換が必要ですか？
-- Remix も 将来的に RSC 対応は検討中だが、だいぶ扱いやすいものになりそう。
+- RSCでパラダイム転換した書き換え... 別に必要ないのでは？
+  - SSR 対応して、Vite でバンドル最適化もされて、十分速いです。
+  - Next.js Page Router から Remix で動くように書き換えるのも比較的容易です(経験談)
+- Remix も 将来的に RSC 対応は検討中ですが、だいぶ扱いやすいものになりそう。
 
 ```tsx
 function loader() {
@@ -279,7 +283,7 @@ export default function Component() {
 
 5. **柔軟な適用範囲** - SSRからSPAまで、同じ概念で対応可能
 
-6. **将来への適応性** - RSCなど新技術へも柔軟に対応
+6. **将来への適応性** - 既存コードを活かしつつRSCなど新技術へも柔軟に対応
 
 7. **コミュニティの成長** - React Routerとの統合による広範な採用
 
@@ -292,3 +296,13 @@ Remixは、Web開発の本質に立ち返りつつ、
 シンプルで強力、直感的で柔軟、そして楽しくて堅実なフレームワークです。
 
 <!-- 1分: まとめると、Remixは「Web開発、こうあるべきだよね」と思わせてくれるフレームワークです。Web標準への回帰、高い透明性、クリアなデータフロー、段階的な機能強化の容易さ、柔軟な適用範囲、そして将来への適応性。これらの特徴が、Remixを現代的なニーズに応える「ちょうどいい」フレームワークにしています。シンプルで強力、直感的で柔軟、そして楽しくて堅実。それがRemixなのです。ご清聴ありがとうございました。 -->
+
+---
+
+```yaml
+layout: end
+```
+
+Thank you.
+
+https://x.com/techtalkjp
