@@ -331,7 +331,7 @@ background: https://cover.sli.dev
 
 Remix の次バージョンである v3 は React Router v7 という名前になります。
 
-<img class="rounded" src="https://remix.run/blog-images/posts/merging-remix-and-react-router/react-router-remix-graphic.jpeg" alt='roadmap' />
+![react router remix graphic](/images/react-router-remix-graphic.png)
 
 <!-- 最も大きな変更点は、次のRemixのバージョン、つまりv3が実際にはReact Router v7として提供されることです。この画像は公式ブログから引用したものですが、RemixとReact Routerが統合されることを示しています。これは単なる名前の変更以上の意味を持ちます。React Routerの広大なユーザーベースを考えると、この統合によってRemixの採用がさらに加速する可能性があります。 -->
 
