@@ -1,9 +1,12 @@
 node_modules
 .DS_Store
-dist
+dist/*
+!dist/index.html
+!dist/vercel.json
 *.local
 .vite-inspect
 .remote-assets
 components.d.ts
 *.pdf
 .turbo
+.vercel

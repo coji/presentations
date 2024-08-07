@@ -9,7 +9,6 @@ class: text-center
 highlighter: shiki
 transition: slide-left
 mdc: true
-download: true
 ---
 
 # Remix + Pagefind

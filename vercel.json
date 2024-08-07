@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    {
+      "source": "/2024-06-18_remix_wainabe-meetup/(.*)",
+      "destination": "/2024-06-18_remix_wainabe-meetup/index.html"
+    },
+    {
+      "source": "/2024-08-07_remix-the-little-things-that-makes-it-great/(.*)",
+      "destination": "/2024-08-07_remix-the-little-things-that-makes-it-great/index.html"
+    }
+  ],
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist"
+}

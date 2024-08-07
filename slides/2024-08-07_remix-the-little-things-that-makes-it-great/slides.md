@@ -6,7 +6,6 @@ class: text-center
 highlighter: shiki
 transition: slide-left
 mdc: true
-download: true
 ---
 
 # Remix の細かすぎて伝わらない好きなところ

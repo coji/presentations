@@ -1,11 +1,11 @@
 {
-  "name": "2024-08-07_remix_the_goldilocks_of_react_frameworks",
+  "name": "2024-08-07_remix-the-little-thing-that-makes-it-great",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "slidev build --base /2024-08-07_remix-the-little-thing-that-makes-it-great/ --out ../../dist/2024-08-07_remix-the-little-thing-that-makes-it-great",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --dark --output ../2024-08-07_remix-the-little-thing-that-makes-it-great.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^0.49.23",
@@ -13,8 +13,5 @@
     "@slidev/theme-seriph": "latest",
     "@slidev/theme-apple-basic": "latest",
     "vue": "^3.4.33"
-  },
-  "devDependencies": {
-    "playwright-chromium": "^1.45.3"
   }
 }

@@ -26,10 +26,6 @@ importers:
       vue:
         specifier: ^3.4.27
         version: 3.4.35(typescript@5.5.4)
-    devDependencies:
-      playwright-chromium:
-        specifier: ^1.44.1
-        version: 1.45.3
 
   slides/2024-08-07_remix-the-little-things-that-makes-it-great:
     dependencies:
@@ -48,10 +44,6 @@ importers:
       vue:
         specifier: ^3.4.33
         version: 3.4.35(typescript@5.5.4)
-    devDependencies:
-      playwright-chromium:
-        specifier: ^1.45.3
-        version: 1.45.3
 
 packages:
 
@@ -5855,8 +5847,10 @@ snapshots:
   playwright-chromium@1.45.3:
     dependencies:
       playwright-core: 1.45.3
+    optional: true
 
-  playwright-core@1.45.3: {}
+  playwright-core@1.45.3:
+    optional: true
 
   points-on-curve@0.2.0: {}
 
