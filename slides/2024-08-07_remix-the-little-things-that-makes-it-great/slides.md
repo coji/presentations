@@ -304,11 +304,15 @@ Remixは、Web開発の本質に立ち返りつつ、
 layout: end
 ```
 
-Thank you.
+Thank you!
 
-coji
+[coji](https://x.com/techtalkjp)
 
-https://x.com/techtalkjp
+[Remix Tokyo Meetup](https://www.meetup.com/remix-tokyo/)
+
+[Remixドキュメント日本語版](https://remix-docs-ja.techtalk.jp/)
+
+[Remix Discord (日本語OK)](https://discord.gg/br3Bw3PqYy)
 
 ---
 
@@ -464,8 +468,12 @@ layout: end
 
 Thank you!
 
-coji
+[coji](https://x.com/techtalkjp)
 
-https://x.com/techtalkjp
+[Remix Tokyo Meetup](https://www.meetup.com/remix-tokyo/)
+
+[Remixドキュメント日本語版](https://remix-docs-ja.techtalk.jp/)
+
+[Remix Discord (日本語OK)](https://discord.gg/br3Bw3PqYy)
 
 <!-- 以上で、Remixの今後の展望についての説明を終わります。ご清聴ありがとうございました。何か質問はありますか？ -->
