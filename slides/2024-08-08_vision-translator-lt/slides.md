@@ -51,6 +51,8 @@ Remix Tokyo Meetupのオーガナイザー
 
 # 買ってしまったので作るしかない
 
+<img src="/images/apple-vision-pro.jpg" className='rounded-full absolute top-8 right-24 w-64' alt="apple vision pro" />
+
 <v-clicks>
 
 - ノリで登壇駆動。Swift / iOS 開発未経験なのに LT まで 1ヶ月。
