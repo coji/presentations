@@ -1,0 +1,16 @@
+{
+  "name": "2024-08-08_vision-translator-lt",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build --base /2024-08-08_2024-08-08_vision-translator-lt/ --out ../../dist/2024-08-08_2024-08-08_vision-translator-lt",
+    "dev": "slidev --open",
+    "export": "slidev export --dark --output ../2024-08-08_vision-translator-lt.pdf"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.24",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.4.33"
+  }
+}

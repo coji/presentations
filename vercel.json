@@ -7,6 +7,10 @@
     {
       "source": "/2024-08-07_remix-the-little-things-that-makes-it-great/(.*)",
       "destination": "/2024-08-07_remix-the-little-things-that-makes-it-great/index.html"
+    },
+    {
+      "source": "/2024-08-08_vision-translator-lt/(.*)",
+      "destination": "/2024-08-08_vision-translator-lt/index.html"
     }
   ],
   "buildCommand": "pnpm run build",
