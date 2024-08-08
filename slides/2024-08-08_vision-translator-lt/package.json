@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build --base /2024-08-08_2024-08-08_vision-translator-lt/ --out ../../dist/2024-08-08_2024-08-08_vision-translator-lt",
+    "build": "slidev build --base /2024-08-08_vision-translator-lt/ --out ../../dist/2024-08-08_vision-translator-lt",
     "dev": "slidev --open",
     "export": "slidev export --dark --output ../2024-08-08_vision-translator-lt.pdf"
   },
