@@ -29,7 +29,7 @@ Remix Tokyo Meetupのオーガナイザー
 
 <v-click>
 
-- React のフルスタックフレームワーク ”Remix" を使った開発者のミートアップ。
+- React のフルスタックフレームワーク ”Remix" を使う開発者同士のミートアップ。
 - 世界各国にそれぞれオーガナイザーがいて Discord でやりとりがある。
 <img src="/images/remix-meetups.png" alt="remix meetups" className="rounded w-90">
 
