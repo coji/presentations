@@ -81,7 +81,7 @@ Remix Tokyo Meetupのオーガナイザー
 
 # デモ
 
-とりあえず YouTube にあった Steve Jobs のスピーチを使用
+とりあえず [YouTube にあった Steve Jobs のスピーチ](https://youtu.be/UF8uR6Z6KLc?si=VVyP3TRLJOmohjJf&t=838)を使用
 
 <iframe width="823" height="463" src="https://www.youtube.com/embed/JIK_UcH7-Bs?si=5twltMuRPY_e-L4d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
