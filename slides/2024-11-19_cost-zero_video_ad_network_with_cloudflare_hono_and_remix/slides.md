@@ -5,14 +5,14 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## 動画アドネットワーク
-  Cloudflare x Hono x Remix でコストゼロ実装
+  ## Video Ad Network
+  Zero-cost implementation with Cloudflare x Hono x Remix
 drawings:
   persist: false
-title: どうせやるなら無料で作る動画アドネットワーク
+title: Creating a Free Video Ad Network on the edge.
 ---
 
-# どうせやるなら無料で作る<br>動画アドネットワーク
+# Creating a Free<br> Video Ad Network<br> on the Edge
 
 Cloudflare x Hono x Remix
 
@@ -32,24 +32,25 @@ Start <carbon:arrow-right class="inline"/>
 layout: two-cols
 ```
 
-# きっかけ
+# Motivation
 
 <v-clicks>
 
-- ひとりで作ってるメディア: "Hyperlocal Tokyo"
+- Solo media project: "Hyperlocal Tokyo"
   - https://tokyo.hyper-local.app/
-  - 出先で「いますぐどこかいい所は？」で使える
-  - 最低でも10年ぐらいは続けるつもり
-  - そのうち、広告枠作って自分で売りたいな
-- でも既存サービスは...
-  - ク**みたいなきったねー広告ばっかり
-  - 大規模メディアしか相手してない
-  - 独自のフォーマット作れない
-    - せっかくメディアから自分で作ってるのに
-- 「今なら、自分ひとりで、無料でできるのでは？」
-  - ほぼ趣味だし。AIあるし。
-  - 動画アドネットワークをゼロから作ろう
-  - オープンソースでね！
+  - Use it to find good places to go right now
+  - Planning to continue for at least 10 years
+  - Eventually want to create and sell ad slots myself
+- But existing services...
+  - Full of ugly ads
+  - Only cater to large-scale media
+  - Can't create custom formats
+    - Even though I'm creating the media myself
+- "Now, can I do it alone for free?"
+  - It's almost a hobby. AI is available.
+  - Let's create a video ad network from scratch
+- Open source!
+
 </v-clicks>
 
 ::right::
@@ -59,38 +60,37 @@ layout: two-cols
 ---
 
 ```yaml
-layout: two-cols
+layout: default
 ```
 
-# アーキテクチャ
+# Architecture
 
-<div class="mermaid">
-graph TD
-    A[Publisher/Advertｖiser] -->|Clerk Auth| B[Remix UI]
-    B --> C[Hono API]
-    C --> D[R2: 動画]
-    C --> E[KV: メタデータ]
-    C --> F[Turso: トラッキング]
-    G[Publisher Site] -->|VAST| C
-</div>
+<img src="/images/architecture.png" alt="architecture" >
 
-::right::
+---
 
-# 特徴
+```yaml
+layout: default
+```
+
+# Features
 
 <v-clicks>
 
-- コストゼロ
-  - 全部エッジで動く
-- TypeScript で全部つくる
-  - ひとりで全部つくってメンテずっとするので
-  - 最初はミニマムに小さく
-  - 困ったら作り直す
-- マルチテナント対応
-  - 広告主
-  - 媒体社
+- Zero cost
+  - Up to 5 million impressions / month
+  - Everything runs on the edge
+- Everything is built with TypeScript
+  - maintaining everything<br> alone
+  - Start small and minimal
+  - Rebuild if needed
+- Multi-tenant support
+  - Advertisers
+  - Publishers
 
 </v-clicks>
+
+<img src="/images/architecture.png" alt="architecture"　className='absolute right-4 w-8/12 bottom-0'  >
 
 ---
 
@@ -98,16 +98,16 @@ graph TD
 layout: two-cols
 ```
 
-# 使用技術
+# Technologies Used
 
 - Cloudflare
-  - R2: 動画ストレージ
-  - Workers: アドサーバ実装 (Hono)
-    - VAST 4.1: 動画広告規格
-  - Workers: 管理UI (Remix)
+  - R2: Video storage
+  - Workers: Ad server implementation (Hono)
+    - VAST 4.1: Video ad standard
+  - Workers: Management UI (Remix)
     - UI: shadcn/ui
-    - Clerk: 認証・マルチテナント
-- Turso: エッジ分散DB (分散SQLite)
+    - Clerk: Authentication & multi-tenancy
+- Turso: Edge distributed DB (distributed SQLite)
 
 ::right::
 
@@ -133,22 +133,22 @@ layout: two-cols
 layout: two-cols
 ```
 
-# デモ
+# Demo
 
-1. [広告サーバと JS SDK](https://ad-server.van.techtalk.jp/)
-   - 動画広告の再生
-   - 音声広告の再生
-   - トラッキング
+1. [Ad server and JS SDK](https://ad-server.van.techtalk.jp/)
+   - Video ad playback
+   - Audio ad playback
+   - Tracking
      - vast
      - impression
      - progress (0%, 25%, 50%, 75%, 100%)
      - click
 
-2. [管理UI: 広告主 / 媒体社向け](https://ui.van.techtalk.jp/)
-   - Clerk によるマルチテナント認証
-   - 配信設定
-   - 広告枠管理
-   - 配信パフォーマンス確認
+2. [Management UI: For advertisers/publishers](https://ui.van.techtalk.jp/)
+   - Multi-tenant authentication with Clerk
+   - Delivery settings
+   - Ad slot management
+   - Check delivery performance
 
 ::right::
 
@@ -161,27 +161,46 @@ layout: two-cols
 layout: default
 ```
 
-# 実装の面白いポイント
+# Interesting Points of Implementation
 
-```ts {all|2|3-4|6-8|all}
-app.get('/vast/:id', async (c) => {
-  const campaignId = c.param('id')
-  // 動画・メタデータ取得
-  const { video, metadata } = await getCampaignData(campaignId)
-  
-  // VASTレスポンス生成
-  const vast = generateVAST(video, metadata)
-  return c.json(vast)
-})
+Ad selection SQL that INNER JOINs vigorously 😂
+
+```ts
+ // Fetch ads matching category, media type, and companion banner sizes
+ await db
+  .selectFrom('ads')
+  .innerJoin('companionBanners', 'companionBanners.adId', 'ads.id')
+  .innerJoin('adGroups', 'adGroups.id', 'ads.adGroupId')
+  .innerJoin('campaigns', 'campaigns.id', 'adGroups.campaignId')
+  .innerJoin('advertisers', 'advertisers.id', 'campaigns.advertiserId')
+  .where('campaigns.status', '==', 'ACTIVE')
+  .where('ads.type', '==', mediaType)
+  .where(
+   'companionBanners.width',
+   'in',
+   companionSizes.map((s) => s.width),
+  )
+  .select([
+   'ads.id',
+   'ads.type',
+   'ads.url',
+   'ads.duration',
+   'ads.width',
+   'ads.height',
+   'ads.mimeType',
+   'ads.description',
+   'adGroups.bidPriceCpm',
+   'adGroups.frequencyCapImpressions',
+   'adGroups.frequencyCapWindow',
+   'adGroups.frequencyCapUnit',
+   'advertisers.id as advertiserId',
+   'campaigns.id as campaignId',
+   'adGroups.id as adGroupId',
+  ])
+  .where('campaigns.status', '==', 'ACTIVE')
+  .orderBy('adGroups.bidPriceCpm', 'desc')
+  .execute()
 ```
-
-<v-clicks>
-
-- VASTという広告規格との出会い
-- エッジでの完結した実装
-- マルチテナントの認証・認可
-
-</v-clicks>
 
 ---
 
@@ -189,20 +208,20 @@ app.get('/vast/:id', async (c) => {
 layout: default
 ```
 
-# これから
+# Future Plans
 
-- キャンペーン予算管理の「均等配信」や「フロントローディング」とか普通のやつを実装したい。
-- まだUIで入稿できないのでちゃんと作りたい
-  - ちょっとダルいけど。comform 使うよ。
+- Implement common features like "even distribution" and "front-loading" for campaign budget management.
+- Properly create the UI for ad submission
+  - It's a bit tedious, but I'll use comform.
 
-- UIのダッシュボード・レポートも必要だよね
-  - [@eiichi292929](https://x.com/eiichi292929) さんによる[DuckDB Wasm の OPFS サポート](https://github.com/duckdb/duckdb-wasm/pull/1856)マージ待ってる。頼む。
+- Need a dashboard and reports for the UI
+  - Waiting for the merge of [DuckDB Wasm's OPFS support](https://github.com/duckdb/duckdb-wasm/pull/1856) by [@eiichi292929](https://x.com/eiichi292929). Please.
 
-- OSSとして地道にメンテしていきます。
-- MIT ライセンスなので好きにしてください。
-  - ニーズがもしあれば、有償での機能追加もおもしろそう
+- Will maintain it steadily as OSS.
+- It's MIT licensed, so feel free to use it.
+  - If there's demand, adding paid features could be interesting.
 
-ソースコードはこちら:
+Source code:
 [github.com/coji/video-ad-network](https://github.com/coji/video-ad-network)
 
 ---
@@ -212,3 +231,11 @@ layout: end
 ```
 
 # Thank you
+
+[@techtalkjp](https://x.com/techtalkjp)
+
+<div className='flex justify-center'>
+  <img src="/images/coji.jpg" className='rounded-full w-12' >
+</div>
+
+https://github.com/coji/video-ad-network
