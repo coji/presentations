@@ -11,6 +11,10 @@
     {
       "source": "/2024-08-08_vision-translator-lt/(.*)",
       "destination": "/2024-08-08_vision-translator-lt/index.html"
+    },
+    {
+      "source": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/(.*)",
+      "destination": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/index.html"
     }
   ],
   "buildCommand": "pnpm run build",
