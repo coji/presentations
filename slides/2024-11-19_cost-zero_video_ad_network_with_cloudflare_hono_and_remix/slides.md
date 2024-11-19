@@ -60,37 +60,30 @@ layout: two-cols
 ---
 
 ```yaml
-layout: default
+layout: two-cols
 ```
 
-# Architecture
+# Demo
 
-<img src="/images/architecture.png" alt="architecture" >
+1. [Ad server and JS SDK](https://ad-server.van.techtalk.jp/example/media1)
+   - Video ad playback
+   - Audio ad playback
+   - Tracking
+     - vast
+     - impression
+     - progress (0%, 25%, 50%, 75%, 100%)
+     - click
 
----
+2. [Management UI: For advertisers/publishers](https://ui.van.techtalk.jp/)
+   - Multi-tenant authentication with Clerk
+   - Delivery settings
+   - Ad slot management
+   - Check delivery performance
 
-```yaml
-layout: default
-```
+::right::
 
-# Features
-
-<v-clicks>
-
-- Zero cost
-  - Up to 5 million impressions / month
-  - Everything runs on the edge
-- Everything is built with TypeScript
-  - maintaining everything<br> alone
-  - Start small and minimal
-  - Rebuild if needed
-- Multi-tenant support
-  - Advertisers
-  - Publishers
-
-</v-clicks>
-
-<img src="/images/architecture.png" alt="architecture"　className='absolute right-4 w-8/12 bottom-0'  >
+<img src="/images/demo_ui.png" alt="ui demo" className='-ml-8' >
+<img src="/images/demo_ad.png" alt="ad demo" className="-mt-32 ml-8"/>
 
 ---
 
@@ -130,30 +123,37 @@ layout: two-cols
 ---
 
 ```yaml
-layout: two-cols
+layout: default
 ```
 
-# Demo
+# Architecture
 
-1. [Ad server and JS SDK](https://ad-server.van.techtalk.jp/)
-   - Video ad playback
-   - Audio ad playback
-   - Tracking
-     - vast
-     - impression
-     - progress (0%, 25%, 50%, 75%, 100%)
-     - click
+<img src="/images/architecture.png" alt="architecture" >
 
-2. [Management UI: For advertisers/publishers](https://ui.van.techtalk.jp/)
-   - Multi-tenant authentication with Clerk
-   - Delivery settings
-   - Ad slot management
-   - Check delivery performance
+---
 
-::right::
+```yaml
+layout: default
+```
 
-<img src="/images/demo_ui.png" alt="ui demo" className='-ml-8' >
-<img src="/images/demo_ad.png" alt="ad demo" className="-mt-32 ml-8"/>
+# Features
+
+<v-clicks>
+
+- Zero cost
+  - Up to 5 million impressions / month
+  - Everything runs on the edge
+- Everything is built with TypeScript
+  - maintaining everything<br> alone
+  - Start small and minimal
+  - Rebuild if needed
+- Multi-tenant support
+  - Advertisers
+  - Publishers
+
+</v-clicks>
+
+<img src="/images/architecture.png" alt="architecture"　className='absolute right-4 w-8/12 bottom-0'  >
 
 ---
 
