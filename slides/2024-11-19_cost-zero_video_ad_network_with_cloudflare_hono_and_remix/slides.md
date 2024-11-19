@@ -152,8 +152,8 @@ layout: two-cols
 
 ::right::
 
-<img src="/public/images/demo_ui.png" alt="ui demo" className='-ml-8' >
-<img src="/public/images/demo_ad.png" alt="ad demo" className="-mt-32 ml-8"/>
+<img src="/images/demo_ui.png" alt="ui demo" className='-ml-8' >
+<img src="/images/demo_ad.png" alt="ad demo" className="-mt-32 ml-8"/>
 
 ---
 
