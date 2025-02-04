@@ -15,6 +15,10 @@
     {
       "source": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/(.*)",
       "destination": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/index.html"
+    },
+    {
+      "source": "/2025-02-04_introduction_to_conform/(.*)",
+      "destination": "/2025-02-04_introduction_to_conform/index.html"
     }
   ],
   "buildCommand": "pnpm run build",
