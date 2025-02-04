@@ -64,7 +64,6 @@ Conform を推す
 
 - Web標準に準拠したシンプルな記述
 - `getFormProps`, `getInputProps` で見通し◎
-- RHF: `register` など、JSXにpropsが増えがち
 
 ```tsx
 import { useForm, getFormProps, getInputProps } from '@conform-to/react';
@@ -125,8 +124,8 @@ function MyForm() {
 ## 3. サーバー連携が直感的
 
 - form の submit はサーバーに送信される、という基本に忠実
-- サーバーアクションとの連携が自然
-- RHF: `handleSubmit` など、クライアントJSでの処理が中心
+- React 19 Server Functions に対応。極めて自然な連携。
+- React Hook Form: Server Functions には非対応。
 
 ```ts
 'use server';
@@ -154,33 +153,7 @@ function MyForm() {
 
 ---
 
-## 4. React 19 Server Functions に対応
-
-- フォームの状態管理をサーバーに委譲可能
-- Reactの最新トレンドに追従
-- RHF: Server Functions との連携は検討中
-
-```tsx
-'use client'
-import { useForm, getInputProps, getFormProps } from '@conform-to/react';
-import { parseWithZod } from '@conform-to/zod';
-import { myAction } from './action';
-
-function MyForm() {
-  const [lastResult, action] = useActionState(myAction, null)
-  const [form, fields] = useForm({ lastResult });
-
-  return (
-    <form action={action} {...getFormProps(form)}>
-      <input {...getInputProps(fields.email, { type: 'email' })} />
-    </form>
-  );
-}
-```
-
----
-
-## 4. プログレッシブエンハンスメント
+## 5. プログレッシブエンハンスメント
 
 - ページロード中など JS 無効状態でも動く。
 - サーバ側でバリデーションするだけでもバリデーション結果表示。
@@ -208,7 +181,7 @@ function MyForm() {
 
 ---
 
-## 5. Zod, Yup, Valibot を使ったバリデーション
+## 6. Zod, Yup, Valibot を使ったバリデーション
 
 - `parseWithZod`, `parseWithYup`, `parseWithValibot` で普通にできます。
 
