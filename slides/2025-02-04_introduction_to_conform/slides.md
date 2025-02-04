@@ -15,25 +15,48 @@ Web標準とReactの進化に寄り添うフォームバリデーション
 
 ## フォームライブラリ、何使ってますか？
 
+<v-clicks depth="2">
+
 - React Hook Form (RHF) 使ってる人 🙋‍♂️
 - 柔軟で使いやすいですよね。
-- （いまは）みんな使ってて安心ですね！
-
-- ちょっとコードがゴチャつきません？
-- 覚えること意外に多くないですか？
-  - そして忘れませんか？
+- みんな使ってて安心ですね！（いまは）
+- でも、ちょっとフォームやフィールドまわりのコードがゴチャつきません？
+- 覚えること意外に多くないです？
+  - そしてそれを毎回忘れませんか？
 - React 19 への対応、どうします...?
 
+</v-clicks>
+
+<v-click>
 そこで
+</v-click>
+
+<v-click>
+
+<div class="text-8xl mx-auto text-center mt-8">
+Conform を推す
+</div>
+
+</v-click>
 
 ---
 
 ## Conformとは？
 
+<v-clicks>
+
 - Web標準のHTMLフォームを拡張するフォームライブラリ
 - サーバーサイドとの連携を**第一**に設計。
 - **フォーム周りのコードがシンプルに。**
   - 覚えやすい。忘れない。
+
+</v-clicks>
+
+<v-click>
+
+以下、私が Conform の好きなところを、お伝えしていきます。
+
+</v-click>
 
 ---
 
@@ -70,7 +93,8 @@ function MyForm() {
 ## 2. アクセシビリティ(a17y)にも対応
 
 - **Web標準のフォーム要素**: そもそも論として、セマンティックなHTMLはa17yの基本
-- **ヘルパー関数**: `getFormProps`, `getInputProps` などのヘルパー関数で、`aria-invalid`, `aria-describedby` などの a17y 属性も設定される。
+- **ヘルパー関数**: `getFormProps`, `getInputProps` などのヘルパー関数で、<br>
+`aria-invalid`, `aria-describedby` などの a17y 属性も自動で設定される。
 
 ```html {all|8,9,10}
 <form id=":r2:" novalidate>
@@ -81,16 +105,20 @@ function MyForm() {
     type="email"
     name="email"
     aria-invalid="true"
-    aria-describedby=":r2:-email-error" />
-  <p id=":r2:-email-error">Required</p>
+    aria-describedby=":r2:-email-error" /> <!-- エラー詳細要素のID -->
+  <p id=":r2:-email-error">Required</p> <!-- エラー詳細 -->
 </form>
 ```
 
-※ ↑バリデーションエラー時にレンダリングされるHTML
+↑バリデーションエラー時にレンダリングされるHTML
 
-- `input` に `aria-invalid`, `aria-describedby` 属性が設定。
+<v-click>
+
 - エラー表示要素に id 属性を設定 (`field.email.errorId`)
 - それを示す `aria-describedby` 属性が `input` に自動で設定される
+- コントロールに `aria-invalid` 属性が付与されるので、エラー時スタイリングでも使いやすい。
+
+</v-click>
 
 ---
 
@@ -103,13 +131,25 @@ function MyForm() {
 ```ts
 'use server';
 export const myAction = async (prevState, formData) => {
-  // formDataをparseして検証
-  const submission = parseWithZod(formData, { schema });
+  const submission = parseWithZod(formData, { schema });  // formDataをparseして検証
   if (submission.status !== 'success') {
     return submission.reply();
   }
   // 検証成功後の処理
 };
+```
+
+```tsx
+'use client';
+function MyForm() {
+  const [lastResult, action] = useActionState(myAction, null)
+  const [form, fields] = useForm({ lastResult });
+  return (
+    <form {...getFormProps(form)} action={action}>
+      <input {...getInputProps(fields.email, { type: 'email' })} />
+    </form>
+  );
+}
 ```
 
 ---
@@ -128,10 +168,7 @@ import { myAction } from './action';
 
 function MyForm() {
   const [lastResult, action] = useActionState(myAction, null)
-  const [form, fields] = useForm({
-    // クライアントサイドでは検証せず
-    lastResult    // lastResult でサーバからの検証結果を表示する
-  });
+  const [form, fields] = useForm({ lastResult });
 
   return (
     <form action={action} {...getFormProps(form)}>
@@ -208,8 +245,16 @@ function MyForm() {
 
 ---
 
+## おまけ
+
+- [Next.js 15 app router での React Hook Form / Conform の様々な書き方デモ](https://form-validate-beige.vercel.app/)
+
+<iframe class="w-full h-100 rounded" src="https://form-validate-beige.vercel.app/" />
+
+---
+
 ## リソース
 
-- 公式サイト (英語): [https://conform.guide/](https://conform.guide/)
 - 公式サイト (日本語): [https://ja.conform.guide/](https://ja.conform.guide/)
 - GitHub: [https://github.com/edmundhung/conform](https://github.com/edmundhung/conform)
+- Conform 作者 [Edmund の bsky](https://bsky.app/profile/edmundhung.bsky.social)
