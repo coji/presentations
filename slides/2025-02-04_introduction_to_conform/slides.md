@@ -54,7 +54,7 @@ Conform を推す
 
 <v-click>
 
-以下、私が Conform の好きなところを、お伝えしていきます。
+以下、私が Conform の好きなところを、ご紹介していきます。
 
 </v-click>
 
