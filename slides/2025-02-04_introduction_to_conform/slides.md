@@ -89,9 +89,9 @@ function MyForm() {
 
 ---
 
-## 2. アクセシビリティ(a17y)にも対応
+## 2. アクセシビリティ(a11y)にも対応
 
-- **Web標準のフォーム要素**: そもそも論として、セマンティックなHTMLはa17yの基本
+- **Web標準のフォーム要素**: そもそも論として、セマンティックなHTMLはa11yの基本
 - **ヘルパー関数**: `getFormProps`, `getInputProps` などのヘルパー関数で、<br>
 `aria-invalid`, `aria-describedby` などの a17y 属性も自動で設定される。
 
@@ -153,7 +153,7 @@ function MyForm() {
 
 ---
 
-## 5. プログレッシブエンハンスメント
+## 4. プログレッシブエンハンスメント
 
 - ページロード中など JS 無効状態でも動く。
 - サーバ側でバリデーションするだけでもバリデーション結果表示。
@@ -181,7 +181,7 @@ function MyForm() {
 
 ---
 
-## 6. Zod, Yup, Valibot を使ったバリデーション
+## 5. Zod, Yup, Valibot を使ったバリデーション
 
 - `parseWithZod`, `parseWithYup`, `parseWithValibot` で普通にできます。
 
