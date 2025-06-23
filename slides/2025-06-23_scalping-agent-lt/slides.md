@@ -115,20 +115,23 @@ DeepResearchのように、仮説→検証→結論のサイクルを通じて�
 
 # 実際のトレード実績
 
+**運用資金: 100万円** で検証。
+
 <div class="flex justify-center">
 
-|  | 取引回数 | 損益 |
-|---|---|---|
-| 3月 | 13 | <span class="text-red-500">¥-122,340</span> |
-| 4月 | 17 | <span class="text-green-500">¥23,380</span> |
-| 5月 | 24 | <span class="text-green-500">¥126,890</span> |
-| 6月 | 22 | <span class="text-green-500">¥92,186</span> |
-| **総計** | **74** | <span class="text-green-500 font-bold">¥120,116</span> |
+|  | 取引回数 | 損益 | 備考 |
+|---|---|---|---|
+| 3月 | 13 | <span class="text-red-500">¥-122,340</span> | トランプさんがなんか言うたびに損した |
+| 4月 | 17 | <span class="text-green-500">¥23,380</span> | |
+| 5月 | 24 | <span class="text-green-500">¥126,890</span> | 1件がストップ高で+10万円 |
+| 6月 | 20 | <span class="text-green-500">¥92,186</span> | 信用取引（ショート）開始 |
+| **総計** | **74** | <span class="text-green-500 font-bold">¥120,116</span> | |
 
 </div>
 
 <div class="mt-8 text-center">
 <p class="text-sm text-gray-600">初月は損失も、システム改善で安定利益に</p>
+<p class="text-sm text-gray-600">4ヶ月で約12%の利益</p>
 </div>
 
 ---
