@@ -15,7 +15,7 @@ transition: slide-left
 mdc: true
 ---
 
-# 自律的マルチステップAIエージェント
+# 自律的マルチステップ<br />AIエージェント
 
 React Router v7 × Vercel AI SDK で作る scalpingAgent
 
@@ -60,7 +60,9 @@ React Router v7 + Vercel AI SDK でマルチステップAIエージェントを�
 
 # デモ
 
-http://localhost:5173
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SBVqcY67sus?si=w95Es6LmAJ0uF0sR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+https://www.youtube.com/watch?v=SBVqcY67sus
 
 ---
 
