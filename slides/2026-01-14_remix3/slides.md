@@ -80,11 +80,15 @@ coji です。
 </v-click>
 
 </div>
-<div>
+<div class="flex flex-col gap-2 h-full">
+
+<a href="https://remix-task-manager-eight.vercel.app/" target="_blank" class="text-xs text-blue-400 hover:underline">
+  https://remix-task-manager-eight.vercel.app/
+</a>
 
 <iframe
   src="https://remix-task-manager-eight.vercel.app/"
-  class="w-full h-full rounded-lg border border-gray-300"
+  class="w-full flex-1 rounded-lg border border-gray-300"
   allow="clipboard-write"
 />
 
@@ -138,6 +142,12 @@ function Counter(this: Handle) {
 <v-click>
 
 useState がない。**普通の JavaScript 変数**。
+
+</v-click>
+
+<v-click>
+
+再描画は自動じゃない。**`this.update()` を呼ぶまで画面は変わらない**。
 
 </v-click>
 
@@ -200,26 +210,25 @@ useEffect がない。クリーンアップは **AbortSignal**（Web 標準）�
 
 ---
 
-# カスタムフックの代わりに ViewModel
+# createContext / useContext がない
+
+ダークモードを複数コンポーネントで共有したい場合
 
 <div class="grid grid-cols-2 gap-4">
 <div>
 
 ### React
 
-```tsx {|2,5-10}
-function useTasks() {
-  const [tasks, setTasks] = useState<Task[]>([])
+```tsx {|1-2,4-9}
+const ThemeContext = createContext(null)
 
-  const addTask = (title: string) => {
-    setTasks(prev => [...prev, {
-      id: nextId++,
-      title,
-      completed: false
-    }])
-  }
-
-  return { tasks, addTask }
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light')
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  )
 }
 ```
 
@@ -228,16 +237,11 @@ function useTasks() {
 
 ### Remix 3
 
-```tsx {|1,10}
-class TaskViewModel extends EventTarget {
-  tasks: Task[] = []
-
-  addTask(title: string) {
-    this.tasks.push({
-      id: this.nextId++,
-      title,
-      completed: false
-    })
+```tsx {|1-7}
+class ThemeStore extends EventTarget {
+  value = 'light'
+  toggle() {
+    this.value = this.value === 'light' ? 'dark' : 'light'
     this.dispatchEvent(new Event('change'))
   }
 }
@@ -248,7 +252,59 @@ class TaskViewModel extends EventTarget {
 
 <v-click>
 
-**EventTarget** は Web 標準 API。ブラウザにもともとある機能。
+**EventTarget** は Web 標準 API。状態変更を通知できる。
+
+</v-click>
+
+---
+
+# Remix 3 での Context の使い方
+
+ThemeStore を提供する側と使う側
+
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+### 提供する側
+
+```tsx {|3-4}
+function ThemeProvider(this: Handle) {
+  const theme = new ThemeStore()
+  this.context.set(theme)
+  this.on(theme, { change: () => this.update() })
+
+  return ({ children }) => (
+    <div class={theme.value === 'dark' ? 'dark' : ''}>
+      {children}
+    </div>
+  )
+}
+```
+
+</div>
+<div>
+
+### 使う側
+
+```tsx {|2-3}
+function ThemeToggle(this: Handle) {
+  const theme = this.context.get(ThemeProvider)
+  this.on(theme, { change: () => this.update() })
+
+  return () => (
+    <button on={{ click: () => theme.toggle() }}>
+      {theme.value === 'light' ? '🌙' : '☀️'}
+    </button>
+  )
+}
+```
+
+</div>
+</div>
+
+<v-click>
+
+`this.context.set/get` で共有、`this.on()` で購読して `this.update()` で再描画。
 
 </v-click>
 
@@ -263,7 +319,7 @@ React の独自作法と Web 標準の対比
 | 状態を持つ | useState | 普通の変数 |
 | 副作用 | useEffect | そのまま書く |
 | クリーンアップ | return 関数 | AbortSignal |
-| ロジック再利用 | カスタムフック | EventTarget 継承 |
+| 状態の共有 | createContext + useContext | EventTarget 継承 |
 
 <v-click>
 
@@ -280,19 +336,20 @@ Remix 3 は「React の作法」ではなく<br>
 
 ---
 
-# おまけ: 同じ ViewModel が React でも動く
+# おまけ: 同じ ThemeStore が React でも動く
 
-さっきの TaskViewModel、実は React でもそのまま使えます。
+さっきの ThemeStore クラス、実は React でもそのまま使えます。
 
-```tsx {|5-6}
-// React で使う場合
-function useTaskViewModel() {
+```tsx {|4-5}
+const theme = new ThemeStore()
+
+function useTheme() {
   return useSyncExternalStore(
     (cb) => {
-      vm.addEventListener('change', cb)
-      return () => vm.removeEventListener('change', cb)
+      theme.addEventListener('change', cb)
+      return () => theme.removeEventListener('change', cb)
     },
-    () => vm
+    () => theme.value
   )
 }
 ```
@@ -325,16 +382,8 @@ EventTarget は Web 標準だから、どのフレームワークでも動く。
 
 </v-click>
 
-<v-click>
-
-気になったら記事を読んでください:
-
-- 基本編: Remix 3 の新コンポーネントライブラリを試してみた
-- 応用編: セマンティックイベントと ViewModel でフレームワーク依存を減らす
-
-</v-click>
-
 ---
+
 layout: end
 ---
 
@@ -342,9 +391,10 @@ layout: end
 
 <div class="text-sm">
 
-- 記事: <https://zenn.dev/coji/articles/remix-3-component-library-trial>
-- 記事: <https://zenn.dev/coji/articles/remix-3-interaction-and-viewmodel>
-- デモ: <https://remix-task-manager-eight.vercel.app/>
-- GitHub: <https://github.com/coji/remix-task-manager>
+気になったら記事を読んでください:
+
+- [Remix 3 の新コンポーネントライブラリを試してみた](https://zenn.dev/coji/articles/remix-3-component-library-trial)
+- [セマンティックイベントと ViewModel でフレームワーク依存を減らす](https://zenn.dev/coji/articles/remix-3-interaction-and-viewmodel)
+- [デモアプリ](https://remix-task-manager-eight.vercel.app/) / [GitHub](https://github.com/coji/remix-task-manager)
 
 </div>
