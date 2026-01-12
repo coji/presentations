@@ -114,7 +114,7 @@ importers:
         specifier: ^3.5.26
         version: 3.5.26(typescript@5.9.3)
 
-  slides/2026-01-12_remix-3-discussion-note:
+  slides/2026-01-14_remix-3-discussion-note:
     dependencies:
       '@slidev/cli':
         specifier: ^52.11.2

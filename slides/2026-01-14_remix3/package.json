@@ -5,7 +5,7 @@
   "scripts": {
     "build": "slidev build --base /2026-01-14_remix3/ --out ../../dist/2026-01-14_remix3",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../slides/2026-01-14_remix3.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.2",

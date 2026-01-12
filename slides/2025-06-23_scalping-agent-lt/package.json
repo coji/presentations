@@ -5,7 +5,7 @@
   "scripts": {
     "build": "slidev build --base /2025-06-23_scalping-agent-lt/ --out ../../dist/2025-06-23_scalping-agent-lt",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../slides/2025-06-23_scalping-agent-lt.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.2",

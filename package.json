@@ -7,7 +7,7 @@
     "new": "node scripts/new-presentation.mjs",
     "build": "node scripts/generate.mjs && run-s build:slides",
     "build:slides": "turbo run build",
-    "export": "turbo run export"
+    "export": "turbo run export --concurrency=1"
   },
   "keywords": [],
   "author": "",

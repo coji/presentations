@@ -5,7 +5,7 @@
   "scripts": {
     "build": "slidev build --base /2025-02-04_introduction_to_conform/ --out ../../dist/2025-02-04_introduction_to_conform",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../slides/2025-02-04_introduction_to_conform.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.2",

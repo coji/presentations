@@ -3,9 +3,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "slidev build --base /2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/ --out ../../dist/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export --output ../../slides/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.2",

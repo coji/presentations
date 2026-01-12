@@ -1,12 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/2026-01-14_remix3/(.*)",
-      "destination": "/2026-01-14_remix3/index.html"
+      "source": "/2026-01-14_remix-3-discussion-note/(.*)",
+      "destination": "/2026-01-14_remix-3-discussion-note/index.html"
     },
     {
-      "source": "/2026-01-12_remix-3-discussion-note/(.*)",
-      "destination": "/2026-01-12_remix-3-discussion-note/index.html"
+      "source": "/2026-01-14_remix3/(.*)",
+      "destination": "/2026-01-14_remix3/index.html"
     },
     {
       "source": "/2025-06-23_scalping-agent-lt/(.*)",

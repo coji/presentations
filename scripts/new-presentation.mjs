@@ -76,7 +76,7 @@ const packageJson = {
   scripts: {
     build: `slidev build --base /${dirName}/ --out ../../dist/${dirName}`,
     dev: 'slidev --open',
-    export: 'slidev export'
+    export: `slidev export --output ../../slides/${dirName}.pdf`
   },
   dependencies: {
     '@slidev/cli': '^52.11.2',

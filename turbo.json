@@ -4,7 +4,8 @@
       "dependsOn": ["^build"]
     },
     "export": {
-      "dependsOn": ["^export"]
+      "dependsOn": ["^export"],
+      "cache": false
     }
   }
 }

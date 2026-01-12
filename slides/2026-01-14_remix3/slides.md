@@ -82,9 +82,7 @@ coji です。
 </div>
 <div class="flex flex-col gap-2 h-full">
 
-<a href="https://remix-task-manager-eight.vercel.app/" target="_blank" class="text-xs text-blue-400 hover:underline">
-  https://remix-task-manager-eight.vercel.app/
-</a>
+<a href="https://remix-task-manager-eight.vercel.app/" target="_blank" class="text-xs text-blue-400 hover:underline">https://remix-task-manager-eight.vercel.app/</a>
 
 <iframe
   src="https://remix-task-manager-eight.vercel.app/"
@@ -317,9 +315,10 @@ React の独自作法と Web 標準の対比
 | やりたいこと | React | Remix 3 |
 |------------|-------|---------|
 | 状態を持つ | useState | 普通の変数 |
+| 再描画 | 自動 | this.update() |
 | 副作用 | useEffect | そのまま書く |
 | クリーンアップ | return 関数 | AbortSignal |
-| 状態の共有 | createContext + useContext | EventTarget 継承 |
+| 状態の共有 | createContext + useContext | EventTarget + this.on() |
 
 <v-click>
 

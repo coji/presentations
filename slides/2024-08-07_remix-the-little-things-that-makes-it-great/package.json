@@ -5,7 +5,7 @@
   "scripts": {
     "build": "slidev build --base /2024-08-07_remix-the-little-things-that-makes-it-great/ --out ../../dist/2024-08-07_remix-the-little-things-that-makes-it-great",
     "dev": "slidev --open",
-    "export": "slidev export --dark --output ../2024-08-07_remix-the-little-things-that-makes-it-great.pdf"
+    "export": "slidev export --dark --output ../../slides/2024-08-07_remix-the-little-things-that-makes-it-great.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.2",
