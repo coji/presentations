@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build --base /2026-01-14-remix3/ --out ../../dist/2026-01-14-remix3",
+    "build": "slidev build --base /2026-01-14_remix3/ --out ../../dist/2026-01-14_remix3",
     "dev": "slidev --open",
     "export": "slidev export"
   },
