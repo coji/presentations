@@ -343,9 +343,9 @@ layout: end
 
 <div class="text-sm">
 
-- 記事: https://zenn.dev/coji/articles/remix-3-component-library-trial
-- 記事: https://zenn.dev/coji/articles/remix-3-interaction-and-viewmodel
-- デモ: https://remix-task-manager-eight.vercel.app/
-- GitHub: https://github.com/coji/remix-task-manager
+- 記事: <https://zenn.dev/coji/articles/remix-3-component-library-trial>
+- 記事: <https://zenn.dev/coji/articles/remix-3-interaction-and-viewmodel>
+- デモ: <https://remix-task-manager-eight.vercel.app/>
+- GitHub: <https://github.com/coji/remix-task-manager>
 
 </div>

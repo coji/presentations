@@ -1,32 +1,32 @@
 {
   "rewrites": [
     {
-      "source": "/2024-06-18_remix_wainabe-meetup/(.*)",
-      "destination": "/2024-06-18_remix_wainabe-meetup/index.html"
-    },
-    {
-      "source": "/2024-08-07_remix-the-little-things-that-makes-it-great/(.*)",
-      "destination": "/2024-08-07_remix-the-little-things-that-makes-it-great/index.html"
-    },
-    {
-      "source": "/2024-08-08_vision-translator-lt/(.*)",
-      "destination": "/2024-08-08_vision-translator-lt/index.html"
-    },
-    {
-      "source": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/(.*)",
-      "destination": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/index.html"
-    },
-    {
-      "source": "/2025-02-04_introduction_to_conform/(.*)",
-      "destination": "/2025-02-04_introduction_to_conform/index.html"
+      "source": "/2026-01-14_remix3/(.*)",
+      "destination": "/2026-01-14_remix3/index.html"
     },
     {
       "source": "/2025-06-23_scalping-agent-lt/(.*)",
       "destination": "/2025-06-23_scalping-agent-lt/index.html"
     },
     {
-      "source": "/2026-01-14_remix3/(.*)",
-      "destination": "/2026-01-14_remix3/index.html"
+      "source": "/2025-02-04_introduction_to_conform/(.*)",
+      "destination": "/2025-02-04_introduction_to_conform/index.html"
+    },
+    {
+      "source": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/(.*)",
+      "destination": "/2024-11-19_cost-zero_video_ad_network_with_cloudflare_hono_and_remix/index.html"
+    },
+    {
+      "source": "/2024-08-08_vision-translator-lt/(.*)",
+      "destination": "/2024-08-08_vision-translator-lt/index.html"
+    },
+    {
+      "source": "/2024-08-07_remix-the-little-things-that-makes-it-great/(.*)",
+      "destination": "/2024-08-07_remix-the-little-things-that-makes-it-great/index.html"
+    },
+    {
+      "source": "/2024-06-18_remix-wainabe-meetup/(.*)",
+      "destination": "/2024-06-18_remix-wainabe-meetup/index.html"
     }
   ],
   "buildCommand": "pnpm run build",
