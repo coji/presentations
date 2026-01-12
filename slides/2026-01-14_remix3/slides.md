@@ -102,7 +102,7 @@ React と Remix 3 のコードを比較してみます。
 
 ### React
 
-```tsx {2}
+```tsx {|2}
 function Counter() {
   const [count, setCount] = useState(0)
   return (
@@ -118,7 +118,7 @@ function Counter() {
 
 ### Remix 3
 
-```tsx {2,5-6}
+```tsx {|2,5-6}
 function Counter(this: Handle) {
   let count = 0
   return () => (
@@ -150,7 +150,7 @@ useState がない。**普通の JavaScript 変数**。
 
 ### React
 
-```tsx {4-11}
+```tsx {|4-11}
 function Timer() {
   const [count, setCount] = useState(0)
 
@@ -171,7 +171,7 @@ function Timer() {
 
 ### Remix 3
 
-```tsx {4-7,9-12}
+```tsx {|4-7,9-12}
 function Timer(this: Handle) {
   let count = 0
 
@@ -207,7 +207,7 @@ useEffect がない。クリーンアップは **AbortSignal**（Web 標準）�
 
 ### React
 
-```tsx {2,5-10}
+```tsx {|2,5-10}
 function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([])
 
@@ -228,7 +228,7 @@ function useTasks() {
 
 ### Remix 3
 
-```tsx {1,10}
+```tsx {|1,10}
 class TaskViewModel extends EventTarget {
   tasks: Task[] = []
 
@@ -284,7 +284,7 @@ Remix 3 は「React の作法」ではなく<br>
 
 さっきの TaskViewModel、実は React でもそのまま使えます。
 
-```tsx {5-6}
+```tsx {|5-6}
 // React で使う場合
 function useTaskViewModel() {
   return useSyncExternalStore(
@@ -335,7 +335,6 @@ EventTarget は Web 標準だから、どのフレームワークでも動く。
 </v-click>
 
 ---
-
 layout: end
 ---
 

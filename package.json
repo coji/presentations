@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "new": "node scripts/new-presentation.mjs",
     "build": "node scripts/generate.mjs && run-s build:slides",
     "build:slides": "turbo run build",
     "export": "turbo run export"
