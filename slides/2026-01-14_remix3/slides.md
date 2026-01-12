@@ -380,7 +380,6 @@ EventTarget は Web 標準だから、**React でも Vue でも Svelte でも動
 </v-click>
 
 ---
-
 layout: end
 ---
 
