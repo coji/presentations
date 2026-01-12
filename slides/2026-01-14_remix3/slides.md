@@ -355,9 +355,7 @@ function useTheme() {
 
 <v-click>
 
-EventTarget は Web 標準だから、どのフレームワークでも動く。
-
-これが「フレームワーク非依存」の意味です。
+EventTarget は Web 標準だから、**React でも Vue でも Svelte でも動く**。
 
 </v-click>
 
