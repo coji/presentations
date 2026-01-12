@@ -8,9 +8,9 @@
     "export": "slidev export --dark --output ../2024-08-08_vision-translator-lt.pdf"
   },
   "dependencies": {
-    "@slidev/cli": "51.8.2",
+    "@slidev/cli": "52.11.2",
     "@slidev/theme-default": "^0.25.0",
     "@slidev/theme-seriph": "^0.25.0",
-    "vue": "^3.5.17"
+    "vue": "^3.5.26"
   }
 }

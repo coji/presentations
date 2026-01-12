@@ -1,2 +1,12 @@
 packages:
   - slides/*
+
+onlyBuiltDependencies:
+  - b
+  - d
+  - e
+  - esbuild
+  - i
+  - l
+  - s
+  - u

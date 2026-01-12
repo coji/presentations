@@ -19,6 +19,14 @@
     {
       "source": "/2025-02-04_introduction_to_conform/(.*)",
       "destination": "/2025-02-04_introduction_to_conform/index.html"
+    },
+    {
+      "source": "/2025-06-23_scalping-agent-lt/(.*)",
+      "destination": "/2025-06-23_scalping-agent-lt/index.html"
+    },
+    {
+      "source": "/2026-01-14_remix3/(.*)",
+      "destination": "/2026-01-14_remix3/index.html"
     }
   ],
   "buildCommand": "pnpm run build",

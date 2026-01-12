@@ -1,9 +1,9 @@
 {
-  "name": "2025-02-04_introduction_to_conform",
+  "name": "2026-01-14_remix3",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "slidev build --base /2025-02-04_introduction_to_conform/ --out ../../dist/2025-02-04_introduction_to_conform",
+    "build": "slidev build --base /2026-01-14-remix3/ --out ../../dist/2026-01-14-remix3",
     "dev": "slidev --open",
     "export": "slidev export"
   },
