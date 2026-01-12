@@ -60,7 +60,8 @@ coji です。
 
 # デモ
 
-https://remix-task-manager-eight.vercel.app/
+<div class="grid grid-cols-2 gap-4 h-[400px]">
+<div>
 
 タスク管理アプリです。見た目は普通ですよね。
 
@@ -78,6 +79,18 @@ https://remix-task-manager-eight.vercel.app/
 
 </v-click>
 
+</div>
+<div>
+
+<iframe
+  src="https://remix-task-manager-eight.vercel.app/"
+  class="w-full h-full rounded-lg border border-gray-300"
+  allow="clipboard-write"
+/>
+
+</div>
+</div>
+
 ---
 
 # useState がない
@@ -89,7 +102,7 @@ React と Remix 3 のコードを比較してみます。
 
 ### React
 
-```tsx
+```tsx {2}
 function Counter() {
   const [count, setCount] = useState(0)
   return (
@@ -105,7 +118,7 @@ function Counter() {
 
 ### Remix 3
 
-```tsx
+```tsx {2,5-6}
 function Counter(this: Handle) {
   let count = 0
   return () => (
@@ -137,7 +150,7 @@ useState がない。**普通の JavaScript 変数**。
 
 ### React
 
-```tsx
+```tsx {4-11}
 function Timer() {
   const [count, setCount] = useState(0)
 
@@ -158,7 +171,7 @@ function Timer() {
 
 ### Remix 3
 
-```tsx
+```tsx {4-7,9-12}
 function Timer(this: Handle) {
   let count = 0
 
@@ -194,7 +207,7 @@ useEffect がない。クリーンアップは **AbortSignal**（Web 標準）�
 
 ### React
 
-```tsx
+```tsx {2,5-10}
 function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([])
 
@@ -215,7 +228,7 @@ function useTasks() {
 
 ### Remix 3
 
-```tsx
+```tsx {1,10}
 class TaskViewModel extends EventTarget {
   tasks: Task[] = []
 
@@ -271,7 +284,7 @@ Remix 3 は「React の作法」ではなく<br>
 
 さっきの TaskViewModel、実は React でもそのまま使えます。
 
-```tsx
+```tsx {5-6}
 // React で使う場合
 function useTaskViewModel() {
   return useSyncExternalStore(
