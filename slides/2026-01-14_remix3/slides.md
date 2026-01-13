@@ -82,13 +82,15 @@ coji です。
 </div>
 <div class="flex flex-col gap-2 h-full">
 
-<a href="https://remix-task-manager-eight.vercel.app/" target="_blank" class="text-xs text-blue-400 hover:underline">https://remix-task-manager-eight.vercel.app/</a>
-
 <iframe
   src="https://remix-task-manager-eight.vercel.app/"
   class="w-full flex-1 rounded-lg border border-gray-300"
   allow="clipboard-write"
 />
+
+<div>
+<a href="https://remix-task-manager-eight.vercel.app/" target="_blank" class="text-xs text-blue-400 hover:underline"><span>https://remix-task-manager-eight.vercel.app/</span></a>
+</div>
 
 </div>
 </div>
@@ -339,6 +341,26 @@ Remix 3 は「React の作法」ではなく<br>
 
 さっきの ThemeStore クラス、実は React でもそのまま使えます。
 
+<div class="grid grid-cols-2 gap-4">
+<div>
+
+### ThemeStore（再掲）
+
+```tsx
+class ThemeStore extends EventTarget {
+  value = 'light'
+  toggle() {
+    this.value = this.value === 'light' ? 'dark' : 'light'
+    this.dispatchEvent(new Event('change'))
+  }
+}
+```
+
+</div>
+<div>
+
+### React での使い方
+
 ```tsx {|4-5}
 const theme = new ThemeStore()
 
@@ -352,6 +374,9 @@ function useTheme() {
   )
 }
 ```
+
+</div>
+</div>
 
 <v-click>
 
