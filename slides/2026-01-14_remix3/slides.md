@@ -13,7 +13,7 @@ React ユーザーのための 10 分イントロ
 
 <div class="absolute bottom-10">
   <p>coji</p>
-  <p class="text-sm opacity-50">2025年1月14日 Offers フロントエンドカンファレンス</p>
+  <p class="text-sm opacity-50">2025年1月14日 #Offers_DeepDive</p>
 </div>
 
 ---
