@@ -394,7 +394,7 @@ EventTarget は Web 標準だから、**React でも Vue でも Svelte でも動
 
 - useState → 普通の変数
 - useEffect → そのまま書く + AbortSignal
-- カスタムフック → EventTarget 継承の ViewModel
+- Context → EventTarget + this.context
 
 </v-clicks>
 
