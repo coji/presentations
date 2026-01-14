@@ -89,7 +89,7 @@ coji です。
 />
 
 <div>
-<a href="https://remix-task-manager-eight.vercel.app/" target="_blank" class="text-xs text-blue-400 hover:underline"><span>https://remix-task-manager-eight.vercel.app/</span></a>
+<a href="https://github.com/coji/remix-task-manager" target="_blank" class="text-xs text-blue-400 hover:underline"><span>https://github.com/coji/remix-task-manager</span></a>
 </div>
 
 </div>
