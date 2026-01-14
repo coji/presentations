@@ -274,7 +274,8 @@ function ThemeProvider(this: Handle) {
   this.on(theme, { change: () => this.update() })
 
   return ({ children }) => (
-    <div class={theme.value === 'light' ? '' : 'dark'}>
+    <div class={theme.value === 'light'
+      ? 'bg-white' : 'bg-gray-900'}>
       {children}
     </div>
   )
