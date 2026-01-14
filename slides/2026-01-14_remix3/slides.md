@@ -74,7 +74,7 @@ coji です。
 Remix 3 でつくりました。
 
 <v-click>
-今回これを題材に React と Remix 3 を比較します。
+今回これを作った経験を元に React と Remix 3 を比較します。
 </v-click>
 
 
