@@ -65,19 +65,18 @@ coji です。
 
 タスク管理アプリです。見た目は普通ですよね。
 
-<v-clicks>
-
 - タスクの追加、完了、削除
 - **長押し**で編集モード
 - **矢印キー**でタスク間を移動
+- **ダークモード**切り替え
 
-</v-clicks>
+普通の簡単な SPA アプリです。<br />
+Remix 3 でつくりました。
 
 <v-click>
-
-でも中身は React じゃありません。
-
+今回これを題材に React と Remix 3 を比較します。
 </v-click>
+
 
 </div>
 <div class="flex flex-col gap-2 h-full">
